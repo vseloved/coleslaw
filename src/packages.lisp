@@ -9,6 +9,7 @@
   (:export #:main
            #:preview
            #:*config*
+           #:*config-file*
            #:blog
            #:content
            #:post

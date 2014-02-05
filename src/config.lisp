@@ -16,6 +16,7 @@
 (define-condition unknown-config-section-error (error)
   ((text :initarg :text :reader text)))
 
+(defparameter *config-file* ".coleslawrc")
 (defparameter *config* nil
   "A variable to store the blog configuration and plugin settings.")
 
@@ -40,7 +41,7 @@ are in the plugins folder in coleslaw's source directory."
 (defun load-config (&optional config-key (dir (user-homedir-pathname)))
   "Load the coleslaw configuration from DIR/.coleslawrc, using CONFIG-KEY
 if necessary. DIR is ~ by default."
-  (with-open-file (in (merge-pathnames ".coleslawrc" dir))
+  (with-open-file (in (merge-pathnames *config-file* dir))
     (let ((config-form (read in)))
       (if (symbolp (car config-form))
           ;; Single site config: ignore CONFIG-KEY.
