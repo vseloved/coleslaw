@@ -75,7 +75,8 @@
   "Load all content of the given CONTENT-TYPE from disk."
   (purge-all content-type)
   (let ((file-type (string-downcase (princ-to-string content-type))))
-    (do-files (file (repo *config*) file-type)
+    (do-files (file (merge-pathnames (repo *config*) (base-dir *config*))
+                    file-type)
       (let ((obj (construct content-type (read-content file))))
         (if (gethash (content-slug obj) *content*)
             (error "There is already existing content with the slug ~a."

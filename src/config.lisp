@@ -2,6 +2,7 @@
 
 (defclass blog ()
   ((author      :initarg :author      :accessor author)
+   (base-dir    :initarg :base-dir    :accessor base-dir)
    (deploy-dir  :initarg :deploy-dir  :accessor deploy-dir)
    (domain      :initarg :domain      :accessor domain)
    (feeds       :initarg :feeds       :accessor feeds)
@@ -45,7 +46,8 @@ if necessary. DIR is ~ by default."
     (let ((config-form (read in)))
       (if (symbolp (car config-form))
           ;; Single site config: ignore CONFIG-KEY.
-          (setf *config* (apply #'make-instance 'blog config-form))
+          (setf *config* (apply #'make-instance 'blog config-form)
+                (base-dir *config*) dir)
           ;; Multi-site config: load config section for CONFIG-KEY.
           (let* ((config-key-pathname (cl-fad:pathname-as-directory config-key))
                  (section (assoc config-key-pathname config-form
