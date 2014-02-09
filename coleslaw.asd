@@ -8,6 +8,7 @@
   :depends-on (:closure-template
                :3bmd
                :3bmd-ext-code-blocks
+               :3bmd-ext-tables
                :alexandria
                :local-time
                :inferior-shell

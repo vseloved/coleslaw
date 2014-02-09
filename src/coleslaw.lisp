@@ -8,7 +8,8 @@
   (:method (text (format (eql :html)))
     text)
   (:method (text (format (eql :md)))
-    (let ((3bmd-code-blocks:*code-blocks* t))
+    (let ((3bmd-code-blocks:*code-blocks* t)
+          (3bmd-tables:*tables* t))
       (with-output-to-string (str)
         (3bmd:parse-string-and-print-to-stream text str)))))
 
