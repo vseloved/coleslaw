@@ -54,7 +54,7 @@ Additional args to render CONTENT can be passed via RENDER-ARGS."
     (dolist (dir (list (app-path "themes/~a/css" (theme *config*))
                        (app-path "themes/~a/img" (theme *config*))
                        (app-path "themes/~a/js" (theme *config*))
-                       (merge-pathnames "static" (repo *config*))))
+                       (merge-pathnames "static/" (repo *config*))))
       (when (probe-file dir)
         (run-program "cp -R ~a ." dir)))
     (do-ctypes (publish (make-keyword ctype)))
