@@ -20,7 +20,8 @@
   ((tags :initform nil :initarg :tags :accessor content-tags)
    (slug :initform nil :initarg :slug :accessor content-slug)
    (date :initform nil :initarg :date :accessor content-date)
-   (text :initform nil :initarg :text :accessor content-text)))
+   (text :initform nil :initarg :text :accessor content-text)
+   (authors :initform nil :initarg :authors :accessor content-authors)))
 
 (defun construct (content-type args)
   "Create an instance of CONTENT-TYPE with the given ARGS."
